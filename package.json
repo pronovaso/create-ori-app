@@ -1,0 +1,42 @@
+{
+  "name": "@ori/create-ori-app",
+  "version": "0.1.0-alpha.5",
+  "description": "Create Ori Next App",
+  "author": "Oriflame software",
+  "license": "ISC",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://oriflame.visualstudio.com/AppShell/_git/poc-01-frontend-b"
+  },
+  "scripts": {
+    "build": "next build && tsc --project tsconfig.json",
+    "dev": "next -p 8080",
+    "start": "next start",
+    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet",
+    "test": "jest --coverage",
+    "test:watch": "jest --coverage --watchAll"
+  },
+  "bin": {
+    "create-ori-app": "./bin/coa.js"
+  },
+  "preferGlobal": true,
+  "dependencies": {
+    "fs-extra": "8.1.0",
+    "react": "16.12.0"
+  },
+  "devDependencies": {
+    "file-loader": "5.0.2"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "npm run lint",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
